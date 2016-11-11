@@ -29,7 +29,7 @@ exports.install = function (Vue, options) {
                 top = document.documentElement.scrollTop || document.body.scrollTop
             }
 
-            var maxheight = (top + winH) * window.devicePixelRatio * 1.3
+            var maxheight = (top + winH) * window.devicePixelRatio * init.prepload
             if (listener.y < maxheight) {
                 render(listener)
             }
