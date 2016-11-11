@@ -90,7 +90,7 @@ exports.install = function (Vue, options) {
     };
 
     // 注册lazyload指令
-    Vue.directive('lazyload', {
+    Vue.directive('lazy', {
         bind: function() {
             if (!init.hasbind) {
                 if (document.getElementById(Object.keys(this.modifiers)[0])) {
