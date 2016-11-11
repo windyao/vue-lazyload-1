@@ -5,6 +5,7 @@ exports.install = function (Vue, options) {
     }
 
     var init = {
+        preload: options.preLoad || 1.3,
         loading: options.loading || '',
         error: options.error || '',
         hasbind: false,
