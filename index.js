@@ -11,7 +11,8 @@ exports.install = function (Vue, options) {
         hasbind: false,
         isInChild: false,
         childEl: null,
-        try: options.try || 1
+        try: options.try || 1,
+        fadin: true
     }
 
     var listeners = []
@@ -28,7 +29,6 @@ exports.install = function (Vue, options) {
                 winH = window.screen.availHeight
                 top = document.documentElement.scrollTop || document.body.scrollTop
             }
-
             var maxheight = (top + winH) * window.devicePixelRatio * init.preload
             if (listener.y < maxheight) {
                 render(listener)
@@ -40,10 +40,10 @@ exports.install = function (Vue, options) {
         var img = new Image()
         img.src = item.src
         img.onload = function(){
-            success(item)
+          success(item)
         }
         img.onerror = function(){
-            error(item)
+          error(item)
         }
     }
 
@@ -57,10 +57,18 @@ exports.install = function (Vue, options) {
             if (index !== -1) {
                 listeners.splice(index, 1)
             }
+            if(init.fadin){
+                item.el.style.opacity = 0
+                item.el.style.transition = 'opacity .3s'
+                item.el.style.webkitTransition = 'opacity .3s'
+            }
             if (!item.bindType) {
                 item.el.setAttribute('src', item.src)
             }else{
                 item.el.setAttribute('style', item.bindType + ': url(' + item.src + ')');
+            }
+            if(init.fadin){
+                item.el.style.opacity = 1
             }
             item.el.setAttribute('lazy', 'loaded')
         }, function(){
