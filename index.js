@@ -65,7 +65,8 @@ exports.install = function (Vue, options) {
             if (!item.bindType) {
                 item.el.setAttribute('src', item.src)
             }else{
-                item.el.setAttribute('style', item.bindType + ': url(' + item.src + ')');
+                // item.el.setAttribute('style', item.bindType + ': url(' + item.src + ')');
+                item.el.style.backgroundImage = 'url(' + item.src + ')'
             }
             if(init.fadin){
                 item.el.style.opacity = 1
@@ -126,7 +127,8 @@ exports.install = function (Vue, options) {
             if (!this.arg) {
                 this.el.setAttribute('src', loading)
             }else{
-                this.el.setAttribute('style', this.arg + ': url(' + loading + ')');
+                // this.el.setAttribute('style', this.arg + ': url(' + loading + ')');
+                this.el.style.backgroundImage = 'url(' + loading + ')'
             }
             var parentEl = null
             if (document.getElementById(Object.keys(this.modifiers)[0])) {
